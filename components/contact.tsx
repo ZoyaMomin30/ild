@@ -25,7 +25,7 @@ export function Contact() {
         >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-[42rem] mx-auto">
-            Ready to discuss your project? Contact us today for a consultation.
+            Ready to discuss your project? Contact us today.
           </p>
         </motion.div>
 
@@ -85,26 +85,33 @@ export function Contact() {
                   <div>
                     <h3 className="font-semibold">Address</h3>
                     <p className="text-muted-foreground">
-                      123 Industrial Area
+                      Dhanraj Mill Compound,182/A2, 
                       <br />
-                      Sector 15, Gurgaon
+                      Sitaram Jadhav Marg, Lower Parel,
                       <br />
-                      Haryana 122001, India
+                      Shah and Nahar Industrial Estate,
+                      <br />
+                      Mumbai-400013, Maharashtra, India
                     </p>
+                    <a className="text-primary" href="https://www.google.co.in/maps/dir//18.9933827,72.8280426/@18.9933332,72.7456787,12z?entry=ttu"><u>Visit Us!</u> </a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <Phone className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p className="text-muted-foreground">+91 98765 43210</p>
+                    <p>Jameel Ahmed</p>
+                    <p className="text-muted-foreground">+91 98208 46868</p>
+                    <p className="text-muted-foreground">+91 8928475009</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <Mail className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-muted-foreground">info@iqralaserdies.com</p>
+                    <a href="mailto:classicwoodenpunch@gmail.com" className="text-muted-foreground">classicwoodenpunch@gmail.com</a>
+                    <br />
+                    <a href="mailto:classicwoodenpunch@yahoo.com"className="text-muted-foreground">classicwoodenpunch@yahoo.com</a>
                   </div>
                 </div>
               </CardContent>
@@ -115,12 +122,8 @@ export function Contact() {
                 <h3 className="font-semibold mb-4">Business Hours</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>Monday - Friday</span>
+                    <span>Monday - Saturday</span>
                     <span>9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>9:00 AM - 2:00 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sunday</span>
