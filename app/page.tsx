@@ -6,6 +6,7 @@ import { Markets } from "@/components/markets"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -13,11 +14,11 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <About />
-        {/* <Products />
-        <Markets /> */}
+        <Products />
+        <Markets />
         <Contact />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

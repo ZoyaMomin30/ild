@@ -11,8 +11,8 @@ export function Footer() {
           <TrendingUp className="h-5 w-5 text-primary" />
           <span className="font-semibold">Iqra Laser Dies</span>
         </div>
-        <p className="text-sm text-muted-foreground">© 2024 Iqra Laser Dies. All rights reserved.</p>
-        <div className="flex items-center space-x-4">
+        <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Iqra Laser Dies. All rights reserved.</p>
+        {/* <div className="flex items-center space-x-4">
           <Link href="#" className="text-sm text-muted-foreground hover:text-primary">
             Terms
           </Link>
@@ -22,7 +22,7 @@ export function Footer() {
           <Link href="#" className="text-sm text-muted-foreground hover:text-primary">
             Contact
           </Link>
-        </div>
+        </div> */}
       </div>
     </footer>
   )

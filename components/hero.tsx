@@ -58,8 +58,9 @@ export function Hero() {
             {/* <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl">
             <img src="/logoILD.png"></img>
             </div> */}
-            <div >
-            <img src="/logoILD.png"></img>
+            
+            <div className="relative z-10 rounded-2xl overflow-hidden" >
+            <img src="/logoILD.png" className="rounded-2xl w-full h-auto"></img>
             </div> 
           </motion.div>
         </div>

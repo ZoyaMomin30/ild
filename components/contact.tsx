@@ -37,25 +37,20 @@ export function Contact() {
           >
             <Card>
               <CardContent className="p-6">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <form className="space-y-2">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
+                      <Label htmlFor="firstName">Full Name</Label>
                       <Input id="firstName" placeholder="John" />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
-                    </div>
-                  </div>
+                  
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input id="email" type="email" placeholder="john@example.com" />
                   </div>
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
                     <Input id="subject" placeholder="Project Inquiry" />
-                  </div>
+                  </div> */}
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea
@@ -100,9 +95,10 @@ export function Contact() {
                   <Phone className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p>Jameel Ahmed</p>
-                    <p className="text-muted-foreground">+91 98208 46868</p>
-                    <p className="text-muted-foreground">+91 8928475009</p>
+                    <p>Jameel Ahmed (Proprietor)</p>
+                    <a href="tel:+919820846868" className="text-muted-foreground">+91 98208 46868</a>
+                    <br />
+                    <a href="tel:+918928475009" className="text-muted-foreground">+91 8928475009</a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -135,6 +131,8 @@ export function Contact() {
           </motion.div>
         </div>
       </div>
+
+      
     </section>
   )
 }
