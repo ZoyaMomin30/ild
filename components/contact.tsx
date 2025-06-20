@@ -15,8 +15,8 @@ export function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="contact" className="py-24 bg-muted/30" ref={ref}>
-      <div className="container space-y-12">
+    <section id="contact" className="py-20 bg-muted/30 " ref={ref}>
+      <div className="container space-y-12 ">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
@@ -29,7 +29,9 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="flex justify-center "> 
+
+        <div className="space-y-4 w-[500px]">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
@@ -38,27 +40,43 @@ export function Contact() {
             <Card>
               <CardContent className="p-6">
                 <form className="space-y-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">Full Name</Label>
-                      <Input id="firstName" placeholder="John" />
-                    </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
-                  </div>
-                  {/* <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="Project Inquiry" />
-                  </div> */}
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your project requirements..."
-                      className="min-h-[120px]"
-                    />
-                  </div>
+
+                      <div className="relative w-full pt-5 group">
+                        <input
+                          type="text"
+                          required
+                          className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
+                        />
+                        <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 peer-focus:text-sm peer-valid:text-sm">
+                          Full Name
+                        </span>
+                        <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
+                      </div>
+
+                      <div className="relative w-full pt-5 group">
+                        <input
+                          type="email"
+                          required
+                          className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
+                        />
+                        <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 peer-focus:text-sm peer-valid:text-sm">
+                          Email
+                        </span>
+                        <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
+                      </div>
+
+                      <div className="relative w-full pt-5 group">
+                        <input
+                          type="text"
+                          required
+                          className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
+                        />
+                        <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 peer-focus:text-sm peer-valid:text-sm">
+                          Message
+                        </span>
+                        <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
+                      </div>
+
                   <Button type="submit" className="w-full">
                     Send Message
                   </Button>
@@ -66,8 +84,9 @@ export function Contact() {
               </CardContent>
             </Card>
           </motion.div>
+          
 
-          <motion.div
+          {/* <motion.div
             initial={{ x: 50, opacity: 0 }}
             animate={isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -128,7 +147,8 @@ export function Contact() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </motion.div> */}
+        </div>
         </div>
       </div>
 

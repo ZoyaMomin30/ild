@@ -13,14 +13,6 @@ export function Markets() {
   return (
     <section id="markets" className="bg-muted/50 py-24" ref={ref}>
       <div className="container space-y-12">
-        <motion.h2
-          initial={{ y: 50, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl"
-        >
-          Markets We Cover
-        </motion.h2>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
           {[
             {

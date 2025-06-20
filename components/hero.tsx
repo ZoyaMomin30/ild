@@ -60,7 +60,7 @@ export function Hero() {
             </div> */}
             
             <div className="relative z-10 rounded-2xl overflow-hidden" >
-            <img src="/logoILD.png" className="rounded-2xl w-full h-auto"></img>
+            <img src="/logo2.png" className="rounded-2xl w-full h-auto"></img>
             </div> 
           </motion.div>
         </div>
