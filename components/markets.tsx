@@ -17,7 +17,7 @@ export function Markets() {
           {[
             {
               icon: BarChart2,
-              title: "Forex Markets",
+              title: "Visit us",
               description: "Trade major, minor, and exotic currency pairs with confidence using our precise signals.",
             },
             {

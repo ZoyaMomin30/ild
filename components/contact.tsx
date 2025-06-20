@@ -3,12 +3,13 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin, PhoneOutgoing } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+
 
 export function Contact() {
   const ref = useRef(null)
@@ -84,72 +85,83 @@ export function Contact() {
               </CardContent>
             </Card>
           </motion.div>
-          
 
-          {/* <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 text-primary mt-1" />
-                  <div>
-                    <h3 className="font-semibold">Address</h3>
-                    <p className="text-muted-foreground">
-                      Dhanraj Mill Compound,182/A2, 
-                      <br />
-                      Sitaram Jadhav Marg, Lower Parel,
-                      <br />
-                      Shah and Nahar Industrial Estate,
-                      <br />
-                      Mumbai-400013, Maharashtra, India
-                    </p>
-                    <a className="text-primary" href="https://www.google.co.in/maps/dir//18.9933827,72.8280426/@18.9933332,72.7456787,12z?entry=ttu"><u>Visit Us!</u> </a>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Phone className="h-6 w-6 text-primary mt-1" />
-                  <div>
-                    <h3 className="font-semibold">Phone</h3>
-                    <p>Jameel Ahmed (Proprietor)</p>
-                    <a href="tel:+919820846868" className="text-muted-foreground">+91 98208 46868</a>
-                    <br />
-                    <a href="tel:+918928475009" className="text-muted-foreground">+91 8928475009</a>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-6 w-6 text-primary mt-1" />
-                  <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <a href="mailto:classicwoodenpunch@gmail.com" className="text-muted-foreground">classicwoodenpunch@gmail.com</a>
-                    <br />
-                    <a href="mailto:classicwoodenpunch@yahoo.com"className="text-muted-foreground">classicwoodenpunch@yahoo.com</a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        </div>
 
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Business Hours</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Monday - Saturday</span>
-                    <span>9:00 AM - 6:00 PM</span>
+        
+        </div>
+
+              {/* CARDS */}
+                  <div className="container space-y-12">
+                  <div className="mx-auto pt-5 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+                    {[
+                      {
+                        icon: MapPin,
+                        title: "Visit us",
+                        description: "Dhanraj Mill Compound,182/A2, Sitaram Jadhav Marg, Lower Parel, Shah and Nahar Industrial Estate, Mumbai-400013, Maharashtra, India ",
+                      },
+                      {
+                        icon: PhoneOutgoing,
+                        title: "Call",
+                        description: (
+                          <>
+                          <h3 className="text-dark-gray">Jameel Ahmed (Proprietor)</h3>
+                          <a href="tel:+919820846868" className="text-muted-foreground">+91 98208 46868</a>
+                            <br />
+                          <a href="tel:+918928475009" className="text-muted-foreground">+91 8928475009</a> </>
+                        ),
+                      },
+                      {
+                        icon: Mail,
+                        title: "Email",
+                        description: (
+                          <>
+                          <a href="mailto:classicwoodenpunch@gmail.com" className="text-muted-foreground">classicwoodenpunch@gmail.com</a>
+                            <br />
+                          <a href="mailto:classicwoodenpunch@yahoo.com"className="text-muted-foreground">classicwoodenpunch@yahoo.com</a>
+                          </>
+                        ),
+                      },
+                    ].map((market, index) => (
+                      <motion.div
+                        key={market.title}
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                      >
+                  <div className="relative w-[260px] h-[274px] mx-auto text-black transition-transform duration-500 cursor-pointer hover:-translate-y-5">
+                    {/* Background gradient (glow effect) */}
+                    <div className="absolute inset-0 rounded-[1.2em] bg-gradient-to-br from-primary to-[primary"></div>
+                    <div className="absolute inset-0 rounded-[1.2em] bg-gradient-to-br from-primary to-primary blur-[10px]"></div>
+
+                    {/* Inner white card with subtle highlight */}
+                    <span className="absolute inset-[6px] bg-white z-[2] rounded-[1em] "></span>
+
+                    {/* Content */}
+                    <div className="relative z-[10] text-black w-full h-full flex flex-col items-center justify-center px-4 text-center space-y-2">
+                      <market.icon className="h-12 w-12 text-primary" />
+                      <h3 className="font-extrabold text-[1.3em]">{market.title}</h3>
+                      <p className="text-l text-muted-foreground  ">{market.description}</p>
+                    </div>
+
+                    
+      
+
+
                   </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
+
+                  
+                      </motion.div>
+                    ))}
                   </div>
+
+
+
+
+
+
+
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div> */}
-        </div>
-        </div>
       </div>
 
       
