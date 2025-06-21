@@ -28,6 +28,9 @@ export function Hero() {
               <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
                 Welcome to the world of precision and expertise, where craftsmanship meets innovation. Half decade of being at forefront of excellence in the realm of printing dies.  
               </p>
+              <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+                Die Maker For Printing & Packaging Laser Cutting & Auto Bending Machine
+              </p>
             </div>
             <motion.div
               initial={{ y: 50, opacity: 0 }}
@@ -59,8 +62,8 @@ export function Hero() {
             <img src="/logoILD.png"></img>
             </div> */}
             
-            <div className="relative z-10 rounded-2xl overflow-hidden" >
-            <img src="/logo2.png" className="rounded-2xl w-full h-auto"></img>
+            <div className="relative z-10 rounded-4xl overflow-hidden" >
+            <img src="/logo2.png" className="rounded-4xl w-full h-auto"></img>
             </div> 
           </motion.div>
         </div>
