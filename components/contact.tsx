@@ -10,8 +10,58 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+
+
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }),
+})
 
 export function Contact() {
+
+const form = useForm<z.infer<typeof formSchema>>({
+  resolver: zodResolver(formSchema),
+  defaultValues: {
+    name: "",
+    email: "",
+    message: "",
+  },
+})
+
+
+async function onSubmit(values: z.infer<typeof formSchema>) {
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+
+    if (res.ok) {
+      alert("I've received the email and I'll reply to you Shortly :)")
+      form.reset()
+    } else {
+      alert("Something went wrong. Try again.")
+    }
+  } catch (error) {
+    console.error(error)
+    alert("Something went wrong. Try again.")
+  }
+}
+
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
@@ -40,48 +90,96 @@ export function Contact() {
           >
             <Card>
               <CardContent className="p-6">
-                <form className="space-y-2">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
 
-                      <div className="relative w-full pt-5 group">
-                        <input
-                          type="text"
-                          required
-                          className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
-                        />
-                        <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 peer-focus:text-sm peer-valid:text-sm">
-                          Full Name
-                        </span>
-                        <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
-                      </div>
+                      {/* Full Name */}
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <div className="relative w-full pt-5 group">
+                              <input
+                                {...field}
+                                required
+                                type="text"
+                                className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
+                              />
+                              <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none 
+                                peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 
+                                peer-focus:text-sm peer-valid:text-sm">
+                                Full Name
+                              </span>
+                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 
+                                peer-focus:h-11 peer-valid:h-11"></i>
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                      <div className="relative w-full pt-5 group">
-                        <input
-                          type="email"
-                          required
-                          className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
-                        />
-                        <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 peer-focus:text-sm peer-valid:text-sm">
-                          Email
-                        </span>
-                        <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
-                      </div>
+                      {/* Email */}
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <div className="relative w-full pt-5 group">
+                              <input
+                                {...field}
+                                required
+                                type="email"
+                                className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
+                              />
+                              <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none 
+                                peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 
+                                peer-focus:text-sm peer-valid:text-sm">
+                                Email
+                              </span>
+                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 
+                                peer-focus:h-11 peer-valid:h-11"></i>
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                      <div className="relative w-full pt-5 group">
-                        <input
-                          type="text"
-                          required
-                          className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
-                        />
-                        <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 peer-focus:text-sm peer-valid:text-sm">
-                          Message
-                        </span>
-                        <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
-                      </div>
+                      {/* Message */}
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <div className="relative w-full pt-5 group">
+                              <input
+                                {...field}
+                                required
+                                type="text"
+                                className="peer w-full px-2 pt-5 pb-2 text-base text-[#23242a] bg-transparent border-none outline-none z-10 relative"
+                              />
+                              <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none 
+                                peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 
+                                peer-focus:text-sm peer-valid:text-sm">
+                                Email
+                              </span>
+                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 
+                                peer-focus:h-11 peer-valid:h-11"></i>
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                  <Button type="submit" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
+
+
+
+
+                    <Button type="submit" className="w-full">
+                      Send Message
+                    </Button>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </motion.div>
@@ -104,22 +202,23 @@ export function Contact() {
                         icon: PhoneOutgoing,
                         title: "Call",
                         description: (
-                          <>
+                          <div>
                           <h3 className="text-dark-gray">Jameel Ahmed (Proprietor)</h3>
                           <a href="tel:+919820846868" className="text-muted-foreground">+91 98208 46868</a>
                             <br />
-                          <a href="tel:+918928475009" className="text-muted-foreground">+91 8928475009</a> </>
+                          <a href="tel:+918928475009" className="text-muted-foreground">+91 8928475009</a> 
+                          </div>
                         ),
                       },
                       {
                         icon: Mail,
                         title: "Email",
                         description: (
-                          <>
+                          <div>
                           <a href="mailto:classicwoodenpunch@gmail.com" className="text-muted-foreground">classicwoodenpunch@gmail.com</a>
                             <br />
                           <a href="mailto:classicwoodenpunch@yahoo.com"className="text-muted-foreground">classicwoodenpunch@yahoo.com</a>
-                          </>
+                          </div>
                         ),
                       },
                     ].map((market, index) => (
@@ -131,10 +230,8 @@ export function Contact() {
                       >
                   <div className="relative w-[260px] h-[274px] mx-auto text-black transition-transform duration-500 cursor-pointer hover:-translate-y-5">
                     {/* Background gradient (glow effect) */}
-                    <div className="absolute inset-0 rounded-[1.2em] bg-gradient-to-br from-primary to-[primary"></div>
-                    <div className="absolute inset-0 rounded-[1.2em] bg-gradient-to-br from-primary to-primary blur-[10px]"></div>
+                    <div className="absolute inset-0 rounded-[1.2em] bg-gradient-to-br from-primary to-primary"></div>
 
-                    {/* Inner white card with subtle highlight */}
                     <span className="absolute inset-[6px] bg-white z-[2] rounded-[1em] "></span>
 
                     {/* Content */}
@@ -144,9 +241,6 @@ export function Contact() {
                       <p className="text-l text-muted-foreground  ">{market.description}</p>
                     </div>
 
-                    
-      
-
 
                   </div>
 
@@ -154,11 +248,6 @@ export function Contact() {
                       </motion.div>
                     ))}
                   </div>
-
-
-
-
-
 
 
                 </div>

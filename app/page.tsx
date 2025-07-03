@@ -5,20 +5,20 @@ import { Products } from "@/components/products"
 import { Markets } from "@/components/markets"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-
+import { Connect } from '@/components/connect'
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="flex-1">
-        <Hero />
+        {/* <Hero />
         <About />
-        <Products />
+        <Products /> */}
+        <Connect />
         <Contact />
-        <Markets />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
