@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: 'Iqra Laser Dies',
@@ -20,7 +21,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href='/favicon.ico' />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }

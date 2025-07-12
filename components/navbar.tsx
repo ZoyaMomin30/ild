@@ -24,9 +24,9 @@ export function Navbar() {
           <Link href="#products" className="transition-colors hover:text-primary">
             Products
           </Link>
-          <Link href="#markets" className="transition-colors hover:text-primary">
+          {/* <Link href="#markets" className="transition-colors hover:text-primary">
             Markets
-          </Link>
+          </Link> */}
           <Link href="#contact" className="transition-colors hover:text-primary">
             Contact
           </Link>

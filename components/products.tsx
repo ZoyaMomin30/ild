@@ -127,11 +127,8 @@ import { motion } from "framer-motion"
 import { useRef } from "react"
 import { useInView } from "framer-motion"
 
-export function Products() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
 
-  const images = [
+ const images = [
     {
       src: "/corrugated_box.png",
       alt: "corrugated box",
@@ -140,7 +137,7 @@ export function Products() {
     {
       src: "/sticker_die.png",
       alt: "Sticker Die",
-      title: "sticker_die",
+      title: "Sticker Die",
     },
     {
       src: "/wooden_die.jpeg ",
@@ -155,27 +152,31 @@ export function Products() {
     {
       src: "/puzzle_die.jpg",
       alt: "Carton Die",
-      title: "Carton Die",
+      title: "Puzzle Die",
     },
-    {
-      src: "/carton-die.png",
-      alt: "Carton Die",
-      title: "Carton Die",
-    },
-    {
-      src: "/carton-die.png",
-      alt: "Carton Die",
-      title: "Carton Die",
-    },
-    {
-      src: "/carton-die.png",
-      alt: "Carton Die",
-      title: "Carton Die",
-    },
+    // {
+    //   src: "/carton-die.png",
+    //   alt: "Carton Die",
+    //   title: "Carton Die",
+    // },
+    // {
+    //   src: "/carton-die.png",
+    //   alt: "Carton Die",
+    //   title: "Carton Die",
+    // },
+    // {
+    //   src: "/carton-die.png",
+    //   alt: "Carton Die",
+    //   title: "Carton Die",
+    // },
   ]
 
+export function Products() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
   return (
-    <section className="relative py-20">
+    <section id="products" className="relative py-20">
       <div ref={ref} className="container mx-auto px-4">
         <motion.h2
           className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl"

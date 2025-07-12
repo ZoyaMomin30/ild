@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { toast } from "sonner"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -51,14 +52,14 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
     })
 
     if (res.ok) {
-      alert("I've received the email and I'll reply to you Shortly :)")
+      toast.success("We will reach you shortly.")
       form.reset()
     } else {
-      alert("Something went wrong. Try again.")
+      toast.error("Something went wrong. Try again.")
     }
   } catch (error) {
     console.error(error)
-    alert("Something went wrong. Try again.")
+    toast.error("Something went wrong. Try again.")
   }
 }
 
@@ -76,7 +77,7 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
         >
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Get In Touch</h2>
           <p className="text-xl text-muted-foreground max-w-[42rem] mx-auto">
-            Ready to discuss your project? Contact us today.
+            Want to get Quotation? Message us and we'll contact you within 24 hours.
           </p>
         </motion.div>
 
@@ -111,8 +112,7 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
                                 peer-focus:text-sm peer-valid:text-sm">
                                 Full Name
                               </span>
-                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 
-                                peer-focus:h-11 peer-valid:h-11"></i>
+                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 rounded transition-all duration-300 z-0peer-focus:bg-yellow-500 peer-valid:bg-yellow-500 peer-focus:h-9 peer-valid:h-9"></i>
                             </div>
                             <FormMessage />
                           </FormItem>
@@ -137,8 +137,7 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
                                 peer-focus:text-sm peer-valid:text-sm">
                                 Email
                               </span>
-                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 
-                                peer-focus:h-11 peer-valid:h-11"></i>
+                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 rounded transition-all duration-300 z-0peer-focus:bg-yellow-500 peer-valid:bg-yellow-500 peer-focus:h-9 peer-valid:h-9"></i>
                             </div>
                             <FormMessage />
                           </FormItem>
@@ -161,16 +160,14 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
                               <span className="absolute left-0 px-2 pt-5 pb-2 text-base text-black transition-all duration-300 pointer-events-none 
                                 peer-focus:text-primary peer-valid:text-black peer-focus:-translate-y-8 peer-valid:-translate-y-8 
                                 peer-focus:text-sm peer-valid:text-sm">
-                                Email
+                                Message
                               </span>
-                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 
-                                peer-focus:h-11 peer-valid:h-11"></i>
+                              <i className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded transition-all duration-300 z-0 peer-focus:h-11 peer-valid:h-11"></i>
                             </div>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-
 
                     <Button type="submit" disabled={form.formState.isSubmitting} className="w-full">
                       Send Message
@@ -180,8 +177,60 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
               </CardContent>
             </Card>
           </motion.div>
+          
 
         </div>
+
+
+
+        {/* <div
+  className="max-w-md mx-auto relative overflow-hidden z-10 bg-white p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-500 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-xl after:top-24 after:-right-12"
+>
+  <h2 className="text-2xl text-sky-900 font-bold mb-6">Update Your Profile</h2>
+
+  <form method="post" action="#">
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-600" 
+        >Full Name</label
+      >
+      <input className="mt-1 p-2 w-full border rounded-md" type="text" />
+    </div>
+
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-600" 
+        >Email Address</label
+      >
+      <input
+        className="mt-1 p-2 w-full border rounded-md"
+        name="email"
+        id="email"
+        type="email"
+      />
+    </div>
+
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-600"
+        >Bio</label
+      >
+      <textarea
+        className="mt-1 p-2 w-full border rounded-md"
+
+        name="bio"
+        id="bio"
+      ></textarea>
+    </div>
+
+    <div className="flex justify-end">
+      <button
+        className="[background:linear-gradient(144deg,#af40ff,#5b42f3_50%,#00ddeb)] text-white px-4 py-2 font-bold rounded-md hover:opacity-80"
+        type="submit"
+      >
+        Update Profile
+      </button>
+    </div>
+  </form>
+</div> */}
+
 
         
         </div>
@@ -235,13 +284,10 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
                     <div className="relative z-[10] text-black w-full h-full flex flex-col items-center justify-center px-4 text-center space-y-2">
                       <market.icon className="h-12 w-12 text-primary" />
                       <h3 className="font-extrabold text-[1.3em]">{market.title}</h3>
-                      <p className="text-l text-muted-foreground  ">{market.description}</p>
+                      <div className="text-l text-muted-foreground  ">{market.description}</div>
                     </div>
-
-
                   </div>
 
-                  
                       </motion.div>
                     ))}
                   </div>
