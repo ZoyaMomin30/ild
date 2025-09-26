@@ -5,7 +5,7 @@ import { Products } from "@/components/products"
 import { Markets } from "@/components/markets"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
-
+import { Producttry } from "@/components/productstry"
 
 export default function Home() {
   return (
@@ -14,7 +14,8 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <About />
-        <Products />
+        {/* <Products /> */}
+        <Producttry />
         <Contact />
       </main>
       <Footer />
